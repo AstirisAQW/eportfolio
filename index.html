@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstirisAQW's ePortfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <div class="navbar">
+      <div class="navbar-title">PORTFOLIO</div>
+      <nav class="navbar-nav">
+        <button class="navbar-button" data-page="about">ABOUT</button>
+        <button class="navbar-button" data-page="skills">SKILLS</button>
+        <button class="navbar-button" data-page="projects">PROJECTS</button>
+        <button class="navbar-button" data-page="contact">CONTACT</button>
+      </nav>
+      <div class="navbar-footer">© <span id="current-year"></span> PORTFOLIO</div>
+    </div>
+    
+    <div id="window-container" class="window-container"></div>
+  </div>
+
+  <!-- Window Templates -->
+  <template id="window-template">
+    <div class="window">
+      <div class="window-titlebar">
+        <div class="window-title"></div>
+        <div class="window-controls">
+          <button class="window-control maximize">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            </svg>
+          </button>
+          <button class="window-control close">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="window-content"></div>
+    </div>
+  </template>
+
+  <!-- Page Content Templates -->
+  <template id="about-template">
+    <div class="about-container">
+      <h2 class="page-title">ABOUT ME</h2>
+      <div class="about-content">
+        <div class="profile-section">
+          <div class="profile-image">
+            <img src="assets/images/profile.jpg" alt="Profile">
+          </div>
+          <div class="profile-name">Joseph Jose A. Deysolong</div>
+          <div class="profile-title">Computer Science Student</div>
+        </div>
+        <div class="info-sections">
+          <div class="info-box">
+            <h3 class="section-title">INTRODUCTION</h3>
+            <p class="section-text">
+              I'm Joseph Jose A. Deysolong, a 3rd-year Computer Science student passionate about solving problems with technology. I am equipped me with skills in programming, data structures, and software development.
+            </p>
+            <p class="section-text">
+              I enjoy building projects, learning new tools, and exploring how technology can make everyday life easier. As a pioneering student of the Computer Science at USTP CDO, I had the chance to collaborate with intelligent and driven individuals who share my passion for innovation.
+            </p>
+          </div>
+          <div class="info-box">
+            <h3 class="section-title">EDUCATION</h3>
+            <div class="information-item">
+              <div class="college-name">University of Science Technology of Southern Philippines</div>
+              <div class="student-info">CITC BSCS | 2022 - Present</div>
+              <p class="college-achievement">
+                <strong>Achievements:</strong>
+                <ul>
+                  <li>Dean's Lister (AY 2022–2023, AY 2023–2024)</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="skills-template">
+    <div class="skills-container">
+      <h2 class="page-title">SKILLS</h2>
+      <div class="tags-grid">
+        <div class="tag-category">
+          <h3 class="tag-title">Web Technologies</h3>
+          <div class="tag-list">
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Vis.js</span>
+          </div>
+        </div>
+        <div class="tag-category">
+          <h3 class="tag-title">Tools / Platforms</h3>
+          <div class="tag-list">
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Visual Studio Code</span>
+            <span class="skill-tag">Visual Studio</span>
+            <span class="skill-tag">LaTeX</span>
+          </div>
+        </div>
+        <div class="tag-category">
+          <h3 class="tag-title">Languages</h3>
+          <div class="tag-list">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Assembly (MIPS)</span>
+          </div>
+        </div>
+        <div class="tag-category">
+          <h3 class="tag-title">Databases</h3>
+          <div class="tag-list">
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">phpMyAdmin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="projects-template">
+    <div class="projects-container">
+      <h2 class="page-title">PROJECTS</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/images/project2.png" alt="BlackJack-in-MIPS Preview">
+          </div>
+          <div class="project-details">
+            <h3 class="project-title">BlackJack-in-MIPS</h3>
+            <p class="project-description">Blackjack card game using MIPS</p>
+            <div class="project-technologies">
+              <span class="tech-tag">Assembly</span>
+            </div>
+            <div class="project-links">
+              <button class="btn" data-link="https://github.com/AstirisAQW/BlackJack-MIPS-Assembly">View on GitHub →</button>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/images/project4.png" alt="Bubble Merge Hybrid Sort Preview">
+          </div>
+          <div class="project-details">
+            <h3 class="project-title">Bubble Merge Hybrid Sort</h3>
+            <p class="project-description">Hybrid sorting algorithm</p>
+            <div class="project-technologies">
+              <span class="tech-tag">LaTeX</span>
+            </div>
+            <div class="project-links">
+              <button class="btn" data-link="https://github.com/HarV1821/BubbleMergeHybridSort">View on GitHub →</button>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/images/project1.png" alt="DFA-&-NFA-Simulator Preview">
+          </div>
+          <div class="project-details">
+            <h3 class="project-title">DFA-&-NFA-Simulator</h3>
+            <p class="project-description">Automaton simulator for NFA and DFA</p>
+            <div class="project-technologies">
+              <span class="tech-tag">Vis.js</span>
+            </div>
+            <div class="project-links">
+              <button class="btn" data-link="https://github.com/KvassAndVodka/DFA-and-NFA-Simulator">View on GitHub →</button>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/images/project3.png" alt="Socket.IO Chat Application Preview">
+          </div>
+          <div class="project-details">
+            <h3 class="project-title">Socket.IO Chat Application</h3>
+            <p class="project-description">A Real-time chat application</p>
+            <div class="project-technologies">
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express.js</span>
+            </div>
+            <div class="project-links">
+              <button class="btn" data-link="https://github.com/AstirisAQW/socketChat">View on GitHub →</button>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/images/project5.png" alt="Stardew Valley Mod Preview">
+          </div>
+          <div class="project-details">
+            <h3 class="project-title">Stardew Valley Mod</h3>
+            <p class="project-description">New NPC - Levi Perez</p>
+            <div class="project-technologies">
+              <span class="tech-tag">SMAPI</span>
+            </div>
+            <div class="project-links">
+              <button class="btn" data-link="https://github.com/joxyle-jhon/Stardew-Valley-Mod">View on GitHub →</button>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/images/project6.png" alt="ePortfolio Preview">
+          </div>
+          <div class="project-details">
+            <h3 class="project-title">ePortfolio</h3>
+            <p class="project-description">ePortfolio using github pages</p>
+            <div class="project-technologies">
+              <span class="tech-tag">ReactJS</span>
+            </div>
+            <div class="project-links">
+              <button class="btn" data-link="https://github.com/AstirisAQW/ePortfolio">View on GitHub →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="contact-template">
+    <div class="contact-container">
+      <h2 class="page-title">CONTACT</h2>
+      <div class="contact-content">
+        <div class="contact-info-section">
+          <div class="info-box">
+            <h3 class="section-title">CONTACT INFO</h3>
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-label">EMAIL</div>
+                <div class="contact-value">deysolong.josephjose457@gmail.com</div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-label">PHONE</div>
+                <div class="contact-value">+63 945-305-6565</div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-label">LOCATION</div>
+                <div class="contact-value">Cagayan de Oro City</div>
+              </div>
+            </div>
+          </div>
+          <div class="info-box">
+            <h3 class="section-title">SOCIAL MEDIA</h3>
+            <div class="social-links">
+              <a href="https://github.com/AstirisAQW" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
