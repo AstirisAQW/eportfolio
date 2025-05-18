@@ -1,27 +1,27 @@
 :root {
-  --background: #f1f1f1;
-  --foreground: #222222;
-  --card: #ffffff;
-  --card-foreground: #222222;
-  --border: #000000;
-  --input: #000000;
-  --primary: #222222;
-  --primary-foreground: #f8f8f8;
-  --secondary: #d9d9d9;
-  --secondary-foreground: #222222;
-  --muted: #d9d9d9;
-  --muted-foreground: #666666;
-  --accent: #d9d9d9;
-  --accent-foreground: #222222;
-  --destructive: #ff5a5a;
-  --destructive-foreground: #f8f8f8;
-  --brutalist-bg: #f1f1f1;
-  --brutalist-text: #222222;
-  --brutalist-accent: #000000;
-  --brutalist-window: #ffffff;
-  --brutalist-border: #000000;
-  --brutalist-navbar: #dddddd;
-  --brutalist-button: #cccccc;
+  --background: #282c34;
+  --foreground: #abb2bf;
+  --card: #21252b;
+  --card-foreground: #abb2bf;
+  --border: #3e4451;
+  --input: #3e4451;
+  --primary: #61afef;
+  --primary-foreground: #282c34;
+  --secondary: #3e4451;
+  --secondary-foreground: #abb2bf;
+  --muted: #3e4451;
+  --muted-foreground: #6f7682;
+  --accent: #98c379;
+  --accent-foreground: #282c34;
+  --destructive: #e06c75;
+  --destructive-foreground: #282c34;
+  --linux-bg: #282c34;
+  --linux-text: #abb2bf;
+  --linux-accent: #61afef;
+  --linux-window: #21252b;
+  --linux-border: #3e4451;
+  --linux-navbar: #1e222a;
+  --linux-button: #3e4451;
   --radius: 0px;
 }
 
@@ -32,9 +32,9 @@
 }
 
 body {
-  font-family: 'Courier New', monospace;
-  background-color: var(--brutalist-bg);
-  color: var(--brutalist-text);
+  font-family: 'Ubuntu Mono', 'Courier New', monospace;
+  background-color: var(--linux-bg);
+  color: var(--linux-text);
   line-height: 1.5;
   height: 100vh;
   overflow: hidden;
@@ -51,22 +51,21 @@ body {
 .navbar {
   height: 100%;
   width: 256px;
-  background-color: #c0c0c0;
-  border-right: 2px solid #808080;
+  background-color: var(--linux-navbar);
+  border-right: 1px solid var(--linux-border);
   display: flex;
   flex-direction: column;
   padding: 16px;
-  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
   z-index: 1;
 }
 
 .navbar-title {
-  color:#000000;
+  color: var(--linux-accent);
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 32px;
   text-align: center;
-  border-bottom: 2px solid #000000;
+  border-bottom: 1px solid var(--linux-border);
   padding-bottom: 16px;
 }
 
@@ -79,20 +78,22 @@ body {
 .navbar-button {
   padding: 12px;
   text-align: left;
-  border: 2px solid #808080;
-  background-color: #c0c0c0;
+  border: none;
+  background-color: var(--linux-button);
+  color: var(--linux-text);
   font-family: inherit;
   cursor: pointer;
-  box-shadow: inset -2px -2px 0 #000000, inset 1px 1px 0 #ffffff;
+  border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
 .navbar-button:hover {
-  background-color: #dfdfdf;
+  background-color: #4b5263;
 }
 
 .navbar-button.active {
-  background-color: #ffffff;
-  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  background-color: var(--linux-accent);
+  color: var(--linux-bg);
 }
 
 .navbar-footer {
@@ -100,8 +101,8 @@ body {
   font-size: 12px;
   text-align: center;
   padding-top: 8px;
-  border-top: 2px solid #000000;
-  color: #000000;
+  border-top: 1px solid var(--linux-border);
+  color: var(--muted-foreground);
 }
 
 /* Window Container */
@@ -109,43 +110,56 @@ body {
   flex: 1;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(to bottom, #ffffff, #a0d2ff);
+  background-color: var(--linux-bg);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233e4451' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* Window Styles */
 .window {
   position: absolute;
-  border-radius: 10px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   z-index: 10;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  border: 1px solid var(--linux-border);
+  background-color: var(--linux-window);
   width: 600px;
   height: 400px;
   min-width: 320px;
   min-height: 240px;
+  transition: all 0.3s ease;
 }
 
 .window.active {
   z-index: 100;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border-color: var(--linux-accent);
 }
 
 .window-titlebar {
-  background-color: #424242;
-  color: rgb(255, 255, 255);
+  background-color: var(--linux-navbar);
+  color: var(--linux-text);
   padding: 10px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--linux-border);
   font-weight: 500;
   cursor: move;
   user-select: none;
   touch-action: none;
+}
+
+.window-title-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.window-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--linux-accent);
 }
 
 .window-title {
@@ -167,20 +181,37 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  color: #ffffff;
+  color: var(--linux-text);
   padding: 0;
 }
 
 .window-control:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.window-control.minimize {
+  color: #f1c40f;
+}
+
+.window-control.minimize:hover {
+  background-color: rgba(241, 196, 15, 0.2);
+}
+
+.window-control.maximize {
+  color: #2ecc71;
+}
+
+.window-control.maximize:hover {
+  background-color: rgba(46, 204, 113, 0.2);
 }
 
 .window-control.close {
-  color: #ff4d4f;
+  color: var(--destructive);
 }
 
 .window-control.close:hover {
-  background-color: rgba(255, 77, 79, 0.1);
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
 }
 
 .window-content {
@@ -200,7 +231,8 @@ body {
   font-weight: bold;
   margin-bottom: 24px;
   padding-bottom: 8px;
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid var(--linux-accent);
+  color: var(--linux-accent);
 }
 
 .about-content {
@@ -211,24 +243,24 @@ body {
 
 .profile-section {
   padding: 16px;
-  border: 2px solid #000;
-  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
+  border: 1px solid var(--linux-border);
+  background-color: rgba(30, 34, 42, 0.7);
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers content horizontally */
-  justify-content: flex-start; /* aligns content to the top */
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .profile-image {
-  width: min(200px, 100%); /* sets a max width, but keeps it responsive */
-  aspect-ratio: 1 / 1;     /* keeps it square */
-  border: 2px solid #000;
+  width: min(200px, 100%);
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--linux-border);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #fff; /* optional: just to show the square if image fails */
+  background-color: #21252b;
 }
 
 .profile-image img {
@@ -237,16 +269,16 @@ body {
   object-fit: cover;
 }
 
-
-
 .profile-name {
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  color: var(--linux-accent);
 }
 
 .profile-title {
   text-align: center;
+  color: var(--muted-foreground);
 }
 
 .info-sections {
@@ -256,16 +288,16 @@ body {
 }
 
 .info-box {
-  background-color: white;
+  background-color: rgba(30, 34, 42, 0.7);
   padding: 16px;
-  border: 2px solid #000;
-  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
+  border: 1px solid var(--linux-border);
 }
 
 .section-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 12px;
+  color: var(--linux-accent);
 }
 
 .section-text {
@@ -286,11 +318,13 @@ body {
 
 .college-name {
   font-weight: bold;
+  color: var(--linux-accent);
 }
 
 .student-info {
   font-size: 14px;
   margin-bottom: 4px;
+  color: var(--muted-foreground);
 }
 
 .college-achievement {
@@ -309,8 +343,8 @@ body {
 }
 
 .tag-category {
-  background-color: white;
-  border: 2px solid #000;
+  background-color: rgba(30, 34, 42, 0.7);
+  border: 1px solid var(--linux-border);
   padding: 16px;
 }
 
@@ -318,6 +352,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 12px;
+  color: var(--linux-accent);
 }
 
 .tag-list {
@@ -327,10 +362,10 @@ body {
 }
 
 .skill-tag {
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
+  background-color: var(--linux-button);
+  border: none;
   padding: 6px 12px;
-  border-radius: 16px;
+  border-radius: 4px;
   font-size: 14px;
   white-space: nowrap;
 }
@@ -348,8 +383,8 @@ body {
 }
 
 .project-card {
-  background-color: white;
-  border: 2px solid #000;
+  background-color: rgba(30, 34, 42, 0.7);
+  border: 1px solid var(--linux-border);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -357,7 +392,7 @@ body {
 
 .project-image {
   width: 100%;
-  background-color: #e8e8e8;
+  background-color: #1a1d23;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,10 +415,12 @@ body {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 8px;
+  color: var(--linux-accent);
 }
 
 .project-description {
   margin-bottom: 16px;
+  color: var(--linux-text);
 }
 
 .project-technologies {
@@ -395,9 +432,12 @@ body {
 
 .tech-tag {
   display: inline-block;
-  border: 2px solid #000;
+  background-color: var(--linux-button);
+  color: var(--linux-text);
   padding: 4px 8px;
   font-size: 14px;
+  border-radius: 4px;
+  border: none;
 }
 
 .project-links {
@@ -405,8 +445,8 @@ body {
 }
 
 .btn {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--linux-accent);
+  color: var(--linux-bg);
   padding: 8px 12px;
   border: none;
   cursor: pointer;
@@ -416,7 +456,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #444;
+  background-color: #89c7f7;
 }
 
 /* Contact Page Styles */
@@ -428,12 +468,6 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
-}
-
-.section-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 16px;
 }
 
 .contact-info-section {
@@ -454,6 +488,7 @@ body {
 
 .contact-label {
   font-weight: bold;
+  color: var(--linux-accent);
 }
 
 .social-links {
@@ -464,15 +499,17 @@ body {
 
 .social-link {
   display: block;
-  border: 2px solid #000;
+  background-color: var(--linux-button);
   text-align: center;
   padding: 8px;
   text-decoration: none;
-  color: black;
+  color: var(--linux-text);
+  border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
 .social-link:hover {
-  background-color: #f0f0f0;
+  background-color: #4b5263;
 }
 
 /* Responsive Styles */
@@ -498,4 +535,100 @@ body {
   .profile-image {
     height: 256px;
   }
+}
+
+/* Tiling window animation */
+.window.tiled {
+  transition: all 0.3s ease-out;
+}
+
+/* Different tiling layouts */
+.tiled-left {
+  left: 0 !important;
+  top: 0 !important;
+  width: 50% !important;
+  height: 100% !important;
+  transform: none !important;
+}
+
+.tiled-right {
+  left: 50% !important;
+  top: 0 !important;
+  width: 50% !important;
+  height: 100% !important;
+  transform: none !important;
+}
+
+.tiled-top {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 50% !important;
+  transform: none !important;
+}
+
+.tiled-bottom {
+  left: 0 !important;
+  top: 50% !important;
+  width: 100% !important;
+  height: 50% !important;
+  transform: none !important;
+}
+
+.tiled-top-left {
+  left: 0 !important;
+  top: 0 !important;
+  width: 50% !important;
+  height: 50% !important;
+  transform: none !important;
+}
+
+.tiled-top-right {
+  left: 50% !important;
+  top: 0 !important;
+  width: 50% !important;
+  height: 50% !important;
+  transform: none !important;
+}
+
+.tiled-bottom-left {
+  left: 0 !important;
+  top: 50% !important;
+  width: 50% !important;
+  height: 50% !important;
+  transform: none !important;
+}
+
+.tiled-bottom-right {
+  left: 50% !important;
+  top: 50% !important;
+  width: 50% !important;
+  height: 50% !important;
+  transform: none !important;
+}
+
+.tiled-fullscreen {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+}
+
+/* Minimized window */
+.window.minimized {
+  z-index: 5 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  border-bottom: none !important;
+  border-radius: 4px 4px 0 0 !important;
+  transition: all 0.3s ease-out;
+}
+
+.window.minimized .window-content {
+  display: none;
+}
+
+.window.minimized .window-titlebar {
+  padding: 5px 10px;
 }
