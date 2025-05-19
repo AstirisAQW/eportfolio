@@ -10,17 +10,23 @@
   <script src="neko/oneko.js"></script>
 </head>
 <body>
+  <div id="bg-clock"><span id="clock-time"></span></div>
   <o-neko id="nekoFollower" speed="30" style="position: fixed; z-index: 10000; transform: scale(2.0)"></o-neko>
   <div class="app-container">
     <div class="navbar">
-      <div class="navbar-title">Terminal</div>
+      <div class="navbar-profile">
+        <div class="navbar-profile-image">
+          <img src="assets/images/profile2.png" alt="Profile">
+        </div>
+        <div class="navbar-profile-name">AstirisAQW</div>
+        <div class="navbar-profile-title">Computer Science</div>
+      </div>
       <nav class="navbar-nav">
-        <button class="navbar-button" data-page="about">~/about</button>
-        <button class="navbar-button" data-page="skills">~/skills</button>
-        <button class="navbar-button" data-page="projects">~/projects</button>
-        <button class="navbar-button" data-page="contact">~/contact</button>
+        <button class="navbar-button" data-page="about">about</button>
+        <button class="navbar-button" data-page="skills">skills</button>
+        <button class="navbar-button" data-page="projects">projects</button>
+        <button class="navbar-button" data-page="contact">contact</button>
       </nav>
-      <div class="navbar-footer">© <span id="current-year"></span> user@linux</div>
     </div>
     
     <div id="window-container" class="window-container"></div>
@@ -65,37 +71,24 @@
 
   <!-- Page Content Templates -->
   <template id="about-template">
-    <div class="about-container">
-      <h2 class="page-title">$ cat ~/about.md</h2>
-      <div class="about-content">
-        <div class="profile-section">
-          <div class="profile-image">
-            <img src="assets/images/profile.jpg" alt="Profile">
-          </div>
-          <div class="profile-name">Joseph Jose A. Deysolong</div>
-          <div class="profile-title">Computer Science Student</div>
-        </div>
+    <div class="about-container minimal">
+      <h2 class="page-title">about</h2>
+      <div class="about-content minimal">
         <div class="info-sections">
-          <div class="info-box">
-            <h3 class="section-title"># INTRODUCTION</h3>
+          <div class="info-box minimal">
+            <h3 class="section-title">INTRODUCTION</h3>
             <p class="section-text">
-              I'm Joseph Jose A. Deysolong, a 3rd-year Computer Science student passionate about solving problems with technology. I am equipped me with skills in programming, data structures, and software development.
-            </p>
-            <p class="section-text">
-              I enjoy building projects, learning new tools, and exploring how technology can make everyday life easier. As a pioneering student of the Computer Science at USTP CDO, I had the chance to collaborate with intelligent and driven individuals who share my passion for innovation.
+              I'm Joseph Jose A. Deysolong, a 3rd-year Computer Science student. Skills in programming, data structures, and software development.
             </p>
           </div>
-          <div class="info-box">
-            <h3 class="section-title"># EDUCATION</h3>
+          <div class="info-box minimal">
+            <h3 class="section-title">EDUCATION</h3>
             <div class="information-item">
               <div class="college-name">University of Science Technology of Southern Philippines</div>
               <div class="student-info">CITC BSCS | 2022 - Present</div>
-              <p class="college-achievement">
-                <strong>Achievements:</strong>
-                <ul>
-                  <li>Dean's Lister (AY 2022–2023, AY 2023–2024)</li>
-                </ul>
-              </p>
+              <ul class="college-achievement">
+                <li>Dean's Lister (AY 2022–2023, AY 2023–2024)</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -104,141 +97,73 @@
   </template>
 
   <template id="skills-template">
-    <div class="skills-container">
-      <h2 class="page-title">$ cat ~/skills.md</h2>
-      <div class="tags-grid">
-        <div class="tag-category">
-          <h3 class="tag-title"># Web Technologies</h3>
-          <div class="tag-list">
-            <span class="skill-tag">React.js</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Vis.js</span>
-          </div>
+    <div class="skills-container minimal">
+      <h2 class="page-title">skills</h2>
+      <div class="tags-grid minimal">
+        <div class="tag-category minimal">
+          <h3 class="tag-title">Web</h3>
+          <div class="tag-list"><span class="skill-tag">React.js</span><span class="skill-tag">Node.js</span><span class="skill-tag">Vis.js</span></div>
         </div>
-        <div class="tag-category">
-          <h3 class="tag-title"># Tools / Platforms</h3>
-          <div class="tag-list">
-            <span class="skill-tag">GitHub</span>
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">Visual Studio Code</span>
-            <span class="skill-tag">Visual Studio</span>
-            <span class="skill-tag">LaTeX</span>
-          </div>
+        <div class="tag-category minimal">
+          <h3 class="tag-title">Tools</h3>
+          <div class="tag-list"><span class="skill-tag">GitHub</span><span class="skill-tag">Figma</span><span class="skill-tag">VS Code</span><span class="skill-tag">LaTeX</span></div>
         </div>
-        <div class="tag-category">
-          <h3 class="tag-title"># Languages</h3>
-          <div class="tag-list">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">C++</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">HTML/CSS</span>
-            <span class="skill-tag">Assembly (MIPS)</span>
-          </div>
+        <div class="tag-category minimal">
+          <h3 class="tag-title">Languages</h3>
+          <div class="tag-list"><span class="skill-tag">Python</span><span class="skill-tag">C++</span><span class="skill-tag">Java</span><span class="skill-tag">HTML/CSS</span></div>
         </div>
-        <div class="tag-category">
-          <h3 class="tag-title"># Databases</h3>
-          <div class="tag-list">
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">phpMyAdmin</span>
-          </div>
+        <div class="tag-category minimal">
+          <h3 class="tag-title">Databases</h3>
+          <div class="tag-list"><span class="skill-tag">MySQL</span><span class="skill-tag">phpMyAdmin</span></div>
         </div>
       </div>
     </div>
   </template>
 
   <template id="projects-template">
-    <div class="projects-container">
-      <h2 class="page-title">$ cat ~/projects.md</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-image">
-            <img src="assets/images/project2.png" alt="BlackJack-in-MIPS Preview">
-          </div>
-          <div class="project-details">
+    <div class="projects-container minimal">
+      <h2 class="page-title">projects</h2>
+      <div class="projects-grid minimal">
+        <div class="project-card minimal">
+          <div class="project-details minimal">
             <h3 class="project-title">BlackJack-in-MIPS</h3>
             <p class="project-description">Blackjack card game using MIPS</p>
-            <div class="project-technologies">
-              <span class="tech-tag">Assembly</span>
-            </div>
-            <div class="project-links">
-              <button class="btn" data-link="https://github.com/AstirisAQW/BlackJack-MIPS-Assembly">View on GitHub →</button>
-            </div>
+            <div class="project-links"><a class="btn minimal" href="https://github.com/AstirisAQW/BlackJack-MIPS-Assembly" target="_blank">GitHub</a></div>
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="assets/images/project4.png" alt="Bubble Merge Hybrid Sort Preview">
-          </div>
-          <div class="project-details">
+        <div class="project-card minimal">
+          <div class="project-details minimal">
             <h3 class="project-title">Bubble Merge Hybrid Sort</h3>
             <p class="project-description">Hybrid sorting algorithm</p>
-            <div class="project-technologies">
-              <span class="tech-tag">LaTeX</span>
-            </div>
-            <div class="project-links">
-              <button class="btn" data-link="https://github.com/HarV1821/BubbleMergeHybridSort">View on GitHub →</button>
-            </div>
+            <div class="project-links"><a class="btn minimal" href="https://github.com/HarV1821/BubbleMergeHybridSort" target="_blank">GitHub</a></div>
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="assets/images/project1.png" alt="DFA-&-NFA-Simulator Preview">
-          </div>
-          <div class="project-details">
+        <div class="project-card minimal">
+          <div class="project-details minimal">
             <h3 class="project-title">DFA-&-NFA-Simulator</h3>
             <p class="project-description">Automaton simulator for NFA and DFA</p>
-            <div class="project-technologies">
-              <span class="tech-tag">Vis.js</span>
-            </div>
-            <div class="project-links">
-              <button class="btn" data-link="https://github.com/KvassAndVodka/DFA-and-NFA-Simulator">View on GitHub →</button>
-            </div>
+            <div class="project-links"><a class="btn minimal" href="https://github.com/KvassAndVodka/DFA-and-NFA-Simulator" target="_blank">GitHub</a></div>
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="assets/images/project3.png" alt="Socket.IO Chat Application Preview">
-          </div>
-          <div class="project-details">
+        <div class="project-card minimal">
+          <div class="project-details minimal">
             <h3 class="project-title">Socket.IO Chat Application</h3>
             <p class="project-description">A Real-time chat application</p>
-            <div class="project-technologies">
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">Express.js</span>
-            </div>
-            <div class="project-links">
-              <button class="btn" data-link="https://github.com/AstirisAQW/socketChat">View on GitHub →</button>
-            </div>
+            <div class="project-links"><a class="btn minimal" href="https://github.com/AstirisAQW/socketChat" target="_blank">GitHub</a></div>
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="assets/images/project5.png" alt="Stardew Valley Mod Preview">
-          </div>
-          <div class="project-details">
+        <div class="project-card minimal">
+          <div class="project-details minimal">
             <h3 class="project-title">Stardew Valley Mod</h3>
             <p class="project-description">New NPC - Levi Perez</p>
-            <div class="project-technologies">
-              <span class="tech-tag">SMAPI</span>
-            </div>
-            <div class="project-links">
-              <button class="btn" data-link="https://github.com/joxyle-jhon/Stardew-Valley-Mod">View on GitHub →</button>
-            </div>
+            <div class="project-links"><a class="btn minimal" href="https://github.com/joxyle-jhon/Stardew-Valley-Mod" target="_blank">GitHub</a></div>
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="assets/images/project6.png" alt="ePortfolio Preview">
-          </div>
-          <div class="project-details">
+        <div class="project-card minimal">
+          <div class="project-details minimal">
             <h3 class="project-title">ePortfolio</h3>
             <p class="project-description">ePortfolio using github pages</p>
-            <div class="project-technologies">
-              <span class="tech-tag">ReactJS</span>
-            </div>
-            <div class="project-links">
-              <button class="btn" data-link="https://github.com/AstirisAQW/ePortfolio">View on GitHub →</button>
-            </div>
+            <div class="project-links"><a class="btn minimal" href="https://github.com/AstirisAQW/ePortfolio" target="_blank">GitHub</a></div>
           </div>
         </div>
       </div>
@@ -246,24 +171,52 @@
   </template>
 
   <template id="contact-template">
-    <div class="contact-container">
-      <h2 class="page-title">$ cat ~/contact.md</h2>
-      <div class="contact-content">
-        <div class="contact-info-section">
-          <div class="info-box">
-            <h3 class="section-title"># CONTACT INFO</h3>
-            <div class="contact-details">
-              <div class="contact-item">
-                <div class="contact-label">EMAIL</div>
-                <div class="contact-value">deysolong.josephjose457@gmail.com</div>
-              </div>
-            </div>
+    <div class="contact-container minimal">
+      <h2 class="page-title">contact</h2>
+      <div class="contact-content minimal">
+        <div class="info-box minimal">
+          <h3 class="section-title">EMAIL</h3>
+          <div class="contact-value">
+            <a href="mailto:deysolong.josephjose457@gmail.com" class="contact-icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              deysolong.josephjose457@gmail.com
+            </a>
           </div>
-          <div class="info-box">
-            <h3 class="section-title"># SOCIALS</h3>
-            <div class="social-links">
-              <a href="https://github.com/AstirisAQW" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
-            </div>
+        </div>
+        <div class="info-box minimal">
+          <h3 class="section-title">SOCIALS</h3>
+          <div class="social-links minimal">
+            <a href="https://github.com/AstirisAQW" target="_blank" class="contact-icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub
+            </a>
+            <a href="#" target="_blank" class="contact-icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+            <a href="#" target="_blank" class="contact-icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+              Twitter
+            </a>
+            <a href="#" target="_blank" class="contact-icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              LinkedIn
+            </a>
           </div>
         </div>
       </div>
@@ -271,5 +224,16 @@
   </template>
 
   <script src="script.js"></script>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock-time').textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 </body>
 </html>

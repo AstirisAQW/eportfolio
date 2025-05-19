@@ -1,10 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Debug - check if templates are loaded
+    console.log('DOM loaded');
+    
     // Set current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    if (document.getElementById('current-year')) {
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    }
     
     // Window management
     const windowContainer = document.getElementById('window-container');
     const windowTemplate = document.getElementById('window-template');
+    
+    // Debug - check if templates were found
+    console.log('window-container found:', !!windowContainer);
+    console.log('window-template found:', !!windowTemplate);
+    
     const openWindows = new Set();
     let activeWindow = null;
     let windowPositions = {};
@@ -57,22 +67,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Page templates
     const pageTemplates = {
-      about: document.getElementById('about-template').content,
-      skills: document.getElementById('skills-template').content,
-      projects: document.getElementById('projects-template').content,
-      contact: document.getElementById('contact-template').content
+      about: document.getElementById('about-template'),
+      skills: document.getElementById('skills-template'),
+      projects: document.getElementById('projects-template'),
+      contact: document.getElementById('contact-template')
     };
+    
+    // Debug - check if page templates were found
+    console.log('Page templates found:', {
+      about: !!pageTemplates.about,
+      skills: !!pageTemplates.skills,
+      projects: !!pageTemplates.projects,
+      contact: !!pageTemplates.contact
+    });
     
     // Navbar button click handlers
     document.querySelectorAll('.navbar-button').forEach(button => {
+      console.log('Adding click listener to navbar button:', button.dataset.page);
       button.addEventListener('click', function() {
         const pageId = this.dataset.page;
+        console.log('Navbar button clicked:', pageId);
         toggleWindow(pageId);
       });
     });
     
     // Toggle window open/close
     function toggleWindow(pageId) {
+      console.log('Toggling window:', pageId);
       if (openWindows.has(pageId)) {
         closeWindow(pageId);
       } else {
@@ -82,22 +103,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Open a new window
     function openWindow(pageId) {
+      console.log('Opening window:', pageId);
       if (openWindows.has(pageId)) {
         bringToFront(pageId);
         return;
       }
       
+      if (!windowTemplate) {
+        console.error('Window template not found');
+        return;
+      }
+      
+      // Create a clone of the window template
       const windowClone = windowTemplate.content.cloneNode(true);
       const windowElement = windowClone.querySelector('.window');
       const windowTitle = windowClone.querySelector('.window-title');
       const windowContent = windowClone.querySelector('.window-content');
+      
+      if (!windowElement || !windowTitle || !windowContent) {
+        console.error('Window elements not found in template');
+        return;
+      }
       
       // Set window ID and title
       windowElement.id = `window-${pageId}`;
       windowTitle.textContent = getWindowTitle(pageId);
       
       // Add page content
-      const pageContent = pageTemplates[pageId].cloneNode(true);
+      if (!pageTemplates[pageId]) {
+        console.error(`Template not found for page: ${pageId}`);
+        return;
+      }
+      
+      const pageContent = pageTemplates[pageId].content.cloneNode(true);
       windowContent.appendChild(pageContent);
       
       // Set initial position
@@ -558,26 +596,34 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
-    // Open about window by default
-    openWindow('about');
-    
-    // Add a tooltip to show tiling shortcuts
-    const tooltip = document.createElement('div');
-    tooltip.style.position = 'absolute';
-    tooltip.style.bottom = '10px';
-    tooltip.style.right = '10px';
-    tooltip.style.background = 'rgba(0,0,0,0.7)';
-    tooltip.style.color = 'white';
-    tooltip.style.padding = '10px';
-    tooltip.style.borderRadius = '5px';
-    tooltip.style.fontSize = '12px';
-    tooltip.style.zIndex = '1000';
-    tooltip.innerHTML = `
-      <p>Keyboard Shortcuts:</p>
-      <p>Alt+T: Toggle auto tiling</p>
-      <p>Alt+1/2/3: Change layout</p>
-      <p>Alt+F: Fullscreen</p>
-      <p>Alt+Arrows: Tile window</p>
-    `;
-    document.body.appendChild(tooltip);
+    // No default window opened
+    // openWindow('about');
+
+    // Function to adjust background clock position
+    function adjustBgClock() {
+      const navbar = document.querySelector('.navbar');
+      const bgClock = document.getElementById('bg-clock');
+      if (!navbar || !bgClock) return;
+
+      const navbarRect = navbar.getBoundingClientRect();
+      const isMobileView = window.innerWidth <= 900; // Matches CSS media query
+
+      if (isMobileView) {
+        // Navbar is at the top
+        bgClock.style.left = '0px';
+        bgClock.style.top = `${navbarRect.height}px`;
+        bgClock.style.width = '100vw';
+        bgClock.style.height = `calc(100vh - ${navbarRect.height}px)`;
+      } else {
+        // Navbar is on the left
+        bgClock.style.left = `${navbarRect.width}px`;
+        bgClock.style.top = '0px';
+        bgClock.style.width = `calc(100vw - ${navbarRect.width}px)`;
+        bgClock.style.height = '100vh';
+      }
+    }
+
+    // Adjust clock on load and resize
+    adjustBgClock();
+    window.addEventListener('resize', adjustBgClock);
   });
