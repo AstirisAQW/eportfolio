@@ -2,6 +2,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Debug - check if templates are loaded
     console.log('DOM loaded');
     
+    // Hamburger menu toggle
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navbarNav = document.querySelector('.navbar-nav');
+    
+    if (hamburgerMenu) {
+      hamburgerMenu.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navbarNav.classList.toggle('active');
+      });
+      
+      // Close menu when a nav button is clicked
+      document.querySelectorAll('.navbar-button').forEach(button => {
+        button.addEventListener('click', function() {
+          if (window.innerWidth <= 900) {
+            hamburgerMenu.classList.remove('active');
+            navbarNav.classList.remove('active');
+          }
+        });
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (window.innerWidth <= 900 && 
+            !event.target.closest('.navbar-nav') && 
+            !event.target.closest('.hamburger-menu') &&
+            navbarNav.classList.contains('active')) {
+          hamburgerMenu.classList.remove('active');
+          navbarNav.classList.remove('active');
+        }
+      });
+    }
+    
     // Set current year in footer
     if (document.getElementById('current-year')) {
         document.getElementById('current-year').textContent = new Date().getFullYear();
@@ -23,47 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Tiling management
     let tilingMode = 'auto'; // auto, manual
     let tilingLayout = 'split'; // split, quad, stack
-    
-    // Key combinations for tiling shortcuts
-    document.addEventListener('keydown', function(e) {
-      // Super+T to toggle tiling mode
-      if (e.altKey && e.key === 't') {
-        tilingMode = tilingMode === 'auto' ? 'manual' : 'auto';
-        if (tilingMode === 'auto') {
-          applyTiling();
-        }
-      }
-      
-      // Super+1,2,3 to change tiling layout
-      if (e.altKey && e.key === '1') {
-        tilingLayout = 'split';
-        if (tilingMode === 'auto') applyTiling();
-      } else if (e.altKey && e.key === '2') {
-        tilingLayout = 'quad';
-        if (tilingMode === 'auto') applyTiling();
-      } else if (e.altKey && e.key === '3') {
-        tilingLayout = 'stack';
-        if (tilingMode === 'auto') applyTiling();
-      }
-      
-      // Super+F for fullscreen current window
-      if (e.altKey && e.key === 'f' && activeWindow) {
-        toggleFullscreen(activeWindow);
-      }
-      
-      // Super+arrow keys for tiling current window
-      if (e.altKey && activeWindow) {
-        if (e.key === 'ArrowLeft') {
-          tileWindow(activeWindow, 'left');
-        } else if (e.key === 'ArrowRight') {
-          tileWindow(activeWindow, 'right');
-        } else if (e.key === 'ArrowUp') {
-          tileWindow(activeWindow, 'top');
-        } else if (e.key === 'ArrowDown') {
-          tileWindow(activeWindow, 'bottom');
-        }
-      }
-    });
     
     // Page templates
     const pageTemplates = {
@@ -219,6 +210,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function getInitialPosition(pageId) {
       if (windowPositions[pageId]) {
         return windowPositions[pageId];
+      }
+      
+      // For mobile view, position windows correctly
+      if (window.innerWidth <= 600) {
+        const newPosition = { x: 0, y: 60 };
+        windowPositions[pageId] = newPosition;
+        return newPosition;
       }
       
       // Calculate a cascading position for new windows
@@ -611,9 +609,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (isMobileView) {
         // Navbar is at the top
         bgClock.style.left = '0px';
-        bgClock.style.top = `${navbarRect.height}px`;
+        bgClock.style.top = '60px'; // Fixed height for mobile navbar
         bgClock.style.width = '100vw';
-        bgClock.style.height = `calc(100vh - ${navbarRect.height}px)`;
+        bgClock.style.height = 'calc(100vh - 60px)';
       } else {
         // Navbar is on the left
         bgClock.style.left = `${navbarRect.width}px`;
@@ -625,5 +623,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Adjust clock on load and resize
     adjustBgClock();
-    window.addEventListener('resize', adjustBgClock);
+    window.addEventListener('resize', function() {
+      adjustBgClock();
+      
+      // Check if we need to reposition windows for mobile view
+      if (window.innerWidth <= 600) {
+        document.querySelectorAll('.window').forEach(window => {
+          // Apply mobile positioning to all windows if in mobile view
+          if (!window.classList.contains('minimized')) {
+            window.style.top = '60px';
+            window.style.left = '0';
+            window.style.width = '100%';
+            window.style.height = 'calc(100% - 60px)';
+            window.style.borderRadius = '0';
+            
+            // Also reset the titlebar radius
+            const titlebar = window.querySelector('.window-titlebar');
+            if (titlebar) {
+              titlebar.style.borderRadius = '0';
+            }
+          }
+        });
+      }
+    });
   });

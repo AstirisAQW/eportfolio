@@ -624,29 +624,123 @@ body {
 /* Responsive Styles */
 @media (max-width: 900px) {
   .navbar {
-    width: 100vw;
+    width: 100%;
     height: auto;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 10px 8px 8px 8px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
   }
+  
+  .navbar-top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
   .navbar-profile {
     flex-direction: row;
     gap: 12px;
     margin-bottom: 0;
   }
+  
+  .navbar-profile-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .navbar-profile-title {
+    display: none;
+  }
+  
+  .hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1002;
+    padding: 10px;
+    margin-right: 15px;
+  }
+  
+  .hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: #d8a22d;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger-menu.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-menu.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
   .navbar-nav {
-    flex-direction: row;
+    flex-direction: column;
     gap: 8px;
     margin-bottom: 0;
+    width: 100%;
+    display: none;
+    padding-top: 10px;
   }
+  
+  .navbar-nav.active {
+    display: flex;
+  }
+  
   .tags-grid, .projects-grid, .contact-content {
     grid-template-columns: 1fr !important;
     flex-direction: column !important;
     gap: 16px !important;
   }
+  
   .contact-content {
     flex-direction: column !important;
+  }
+  
+  .window-container {
+    margin-top: 60px;
+  }
+  
+  #bg-clock {
+    top: 60px !important;
+  }
+}
+
+/* Mobile window adjustments */
+@media (max-width: 600px) {
+  .window {
+    width: 100% !important;
+    height: calc(100% - 60px) !important;
+    top: 60px !important;
+    left: 0 !important;
+    border-radius: 0;
+  }
+  
+  .window-titlebar {
+    border-radius: 0;
+  }
+  
+  .tiled-left, .tiled-right, .tiled-top, .tiled-bottom,
+  .tiled-top-left, .tiled-top-right, .tiled-bottom-left, .tiled-bottom-right,
+  .tiled-fullscreen {
+    width: 100% !important;
+    height: calc(100% - 60px) !important;
+    top: 60px !important;
+    left: 0 !important;
   }
 }
 
