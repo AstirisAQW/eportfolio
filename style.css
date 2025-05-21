@@ -607,7 +607,7 @@ body {
 #bg-clock span {
   font-family: 'JetBrains Mono', 'Fira Mono', monospace;
   font-size: 14vw;
-  color: rgba(216, 162, 45, 0.12);
+  color: rgb(216, 162, 45);
   font-weight: 700;
   letter-spacing: 0.08em;
   user-select: none;
