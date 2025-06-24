@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-  document.querySelector('.sidebar a[href="#projects"]').click();
+  document.querySelector('.sidebar a[href="#about"]').click();
 });
 
 document.querySelectorAll('.sidebar a').forEach(link => {
