@@ -1,246 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Spectral' rel='stylesheet'>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AstirisAQW's ePortfolio</title>
+  <title>AstirisAQW</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-  <script src="neko/oneko-element.js?define" type="module"></script>
-  <script src="neko/oneko.js"></script>
 </head>
 <body>
-  <div id="bg-clock"><span id="clock-time"></span></div>
-  <o-neko id="nekoFollower" speed="30" style="position: fixed; z-index: 10000; transform: scale(2.0)"></o-neko>
-  <div class="app-container">
-    <div class="navbar">
-      <div class="navbar-top">
-        <div class="navbar-profile">
-          <div class="navbar-profile-image">
-            <img src="assets/images/profile2.png" alt="Profile">
-          </div>
-          <div class="navbar-profile-name">AstirisAQW</div>
-          <div class="navbar-profile-title">Computer Science</div>
+  <div class="container">
+    <div class="sidebar">
+      <div class="sidebar-title">Archives</div>
+      <hr style="border-style:solid;">
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#links">links</a>
+    </div>
+    <div class="content">                                                                                         
+      <div id="about" class="content-section">
+        <div class="content-section-header">
+          <img src="/assets/images/profile2.png" alt="AstirisAQW Avatar" class="content-section-header-avatar">
+          <span class="content-section-header-name">AstirisAQW</span>
         </div>
-        <div class="hamburger-menu">
-          <div class="hamburger-line"></div>
-          <div class="hamburger-line"></div>
-          <div class="hamburger-line"></div>
+        <hr style="border-style:solid;">
+        
+        <div class="content-section-body">
+          <div class="content-section-body-title">EDUCATION</div>
+
+          
+          <div class="content-section-body-items">
+            <p class="content-section-education-item">Bachelor of Science in Computer Science</p>
+            <span class="content-section-education-item-details">(Expected Graduation 2026)</span>
+          </div>
         </div>
       </div>
-      <nav class="navbar-nav">
-        <button class="navbar-button" data-page="about">about</button>
-        <button class="navbar-button" data-page="skills">skills</button>
-        <button class="navbar-button" data-page="projects">projects</button>
-        <button class="navbar-button" data-page="contact">contact</button>
-      </nav>
+
+      <div id="projects" class="content-section">
+
+
+        <div class="projects-section">
+          <h3>TOOLS</h3>
+          <div class="skills-tags">
+            <span class="skill-tag">Adobe Premiere</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Canva</span>
+          </div>
+          <h3>DEVELOPMENT</h3>
+            <div class="skills-tags">
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Java</span>
+        </div>
+          <h3>PROJECTS</h3>
+          
+
+        </div>
+      </div>
+      <div id="links" class="content-section">
+        <h1>SOCIALS</h1>
+      </div>
     </div>
-    
-    <div id="window-container" class="window-container"></div>
   </div>
-
-  <!-- Window Templates -->
-  <template id="window-template">
-    <div class="window">
-      <div class="window-titlebar">
-        <div class="window-title-area">
-          <div class="window-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-              <path d="M10 4v16"></path>
-              <path d="M2 12h8"></path>
-            </svg>
-          </div>
-          <div class="window-title"></div>
-        </div>
-        <div class="window-controls">
-          <button class="window-control minimize">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-          </button>
-          <button class="window-control maximize">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            </svg>
-          </button>
-          <button class="window-control close">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="window-content"></div>
-    </div>
-  </template>
-
-  <!-- Page Content Templates -->
-  <template id="about-template">
-    <div class="about-container minimal">
-      <h2 class="page-title">about</h2>
-      <div class="about-content minimal">
-        <div class="info-sections">
-          <div class="info-box minimal">
-            <h3 class="section-title">INTRODUCTION</h3>
-            <p class="section-text">
-              I'm Joseph Jose A. Deysolong, a 3rd-year Computer Science student. Skills in programming, data structures, and software development.
-            </p>
-          </div>
-          <div class="info-box minimal">
-            <h3 class="section-title">EDUCATION</h3>
-            <div class="information-item">
-              <div class="college-name">University of Science Technology of Southern Philippines</div>
-              <div class="student-info">CITC BSCS | 2022 - Present</div>
-              <ul class="college-achievement">
-                <li>Dean's Lister (AY 2022–2023, AY 2023–2024)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
-
-  <template id="skills-template">
-    <div class="skills-container minimal">
-      <h2 class="page-title">skills</h2>
-      <div class="tags-grid minimal">
-        <div class="tag-category minimal">
-          <h3 class="tag-title">Web</h3>
-          <div class="tag-list"><span class="skill-tag">React.js</span><span class="skill-tag">Node.js</span><span class="skill-tag">Vis.js</span></div>
-        </div>
-        <div class="tag-category minimal">
-          <h3 class="tag-title">Tools</h3>
-          <div class="tag-list"><span class="skill-tag">GitHub</span><span class="skill-tag">Figma</span><span class="skill-tag">VS Code</span><span class="skill-tag">LaTeX</span></div>
-        </div>
-        <div class="tag-category minimal">
-          <h3 class="tag-title">Languages</h3>
-          <div class="tag-list"><span class="skill-tag">Python</span><span class="skill-tag">C++</span><span class="skill-tag">Java</span><span class="skill-tag">HTML/CSS</span></div>
-        </div>
-        <div class="tag-category minimal">
-          <h3 class="tag-title">Databases</h3>
-          <div class="tag-list"><span class="skill-tag">MySQL</span><span class="skill-tag">phpMyAdmin</span></div>
-        </div>
-      </div>
-    </div>
-  </template>
-
-  <template id="projects-template">
-    <div class="projects-container minimal">
-      <h2 class="page-title">projects</h2>
-      <div class="projects-grid minimal">
-        <div class="project-card minimal">
-          <div class="project-details minimal">
-            <h3 class="project-title">BlackJack-in-MIPS</h3>
-            <p class="project-description">Blackjack card game using MIPS</p>
-            <div class="project-links"><a class="btn minimal" href="https://github.com/AstirisAQW/BlackJack-MIPS-Assembly" target="_blank">GitHub</a></div>
-          </div>
-        </div>
-        <div class="project-card minimal">
-          <div class="project-details minimal">
-            <h3 class="project-title">Bubble Merge Hybrid Sort</h3>
-            <p class="project-description">Hybrid sorting algorithm</p>
-            <div class="project-links"><a class="btn minimal" href="https://github.com/HarV1821/BubbleMergeHybridSort" target="_blank">GitHub</a></div>
-          </div>
-        </div>
-        <div class="project-card minimal">
-          <div class="project-details minimal">
-            <h3 class="project-title">DFA-&-NFA-Simulator</h3>
-            <p class="project-description">Automaton simulator for NFA and DFA</p>
-            <div class="project-links"><a class="btn minimal" href="https://github.com/KvassAndVodka/DFA-and-NFA-Simulator" target="_blank">GitHub</a></div>
-          </div>
-        </div>
-        <div class="project-card minimal">
-          <div class="project-details minimal">
-            <h3 class="project-title">Socket.IO Chat Application</h3>
-            <p class="project-description">A Real-time chat application</p>
-            <div class="project-links"><a class="btn minimal" href="https://github.com/AstirisAQW/socketChat" target="_blank">GitHub</a></div>
-          </div>
-        </div>
-        <div class="project-card minimal">
-          <div class="project-details minimal">
-            <h3 class="project-title">Stardew Valley Mod</h3>
-            <p class="project-description">New NPC - Levi Perez</p>
-            <div class="project-links"><a class="btn minimal" href="https://github.com/joxyle-jhon/Stardew-Valley-Mod" target="_blank">GitHub</a></div>
-          </div>
-        </div>
-        <div class="project-card minimal">
-          <div class="project-details minimal">
-            <h3 class="project-title">ePortfolio</h3>
-            <p class="project-description">ePortfolio using github pages</p>
-            <div class="project-links"><a class="btn minimal" href="https://github.com/AstirisAQW/ePortfolio" target="_blank">GitHub</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
-
-  <template id="contact-template">
-    <div class="contact-container minimal">
-      <h2 class="page-title">contact</h2>
-      <div class="contact-content minimal">
-        <div class="info-box minimal">
-          <h3 class="section-title">EMAIL</h3>
-          <div class="contact-value">
-            <a href="mailto:deysolong.josephjose457@gmail.com" class="contact-icon-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              deysolong.josephjose457@gmail.com
-            </a>
-          </div>
-        </div>
-        <div class="info-box minimal">
-          <h3 class="section-title">SOCIALS</h3>
-          <div class="social-links minimal">
-            <a href="https://github.com/AstirisAQW" target="_blank" class="contact-icon-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              GitHub
-            </a>
-            <a href="https://www.instagram.com/astirisaqw/" target="_blank" class="contact-icon-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              Instagram
-            </a>
-            <a href="https://x.com/AstirisAQW" target="_blank" class="contact-icon-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-              </svg>
-              Twitter
-            </a>
-            <a href="https://www.linkedin.com/in/joseph-jose-deysolong-8bab86354/" target="_blank" class="contact-icon-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-              </svg>
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
-
+  <div class="footer">© AstirisAQW 2025</div>
   <script src="script.js"></script>
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2, '0');
-      const m = String(now.getMinutes()).padStart(2, '0');
-      const s = String(now.getSeconds()).padStart(2, '0');
-      document.getElementById('clock-time').textContent = `${h}:${m}:${s}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
 </body>
 </html>
