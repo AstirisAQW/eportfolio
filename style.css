@@ -30,8 +30,8 @@ body {
 .container {
   background-color: #ffffff;
   display: flex;
-  width: 850px;
-  height: 500px;
+  width: 1000px;
+  height: 600px;
   box-shadow: 0px 5px 0px #00000041;
   position: absolute;
   left: 50%;
