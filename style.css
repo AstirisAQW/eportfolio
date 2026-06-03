@@ -283,6 +283,51 @@ body {
   color: #333;
 }
 
+/* Certifications & Badges */
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cert-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-left: 10px;
+  border-left: 2px solid #7F7176;
+}
+
+.cert-badge-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.cert-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cert-name {
+  font-size: 13px;
+  color: #424242;
+  font-weight: 600;
+}
+
+.cert-issuer {
+  font-size: 11px;
+  color: #424242;
+}
+
+.cert-date {
+  font-size: 11px;
+  color: #788585;
+  font-style: italic;
+}
+
 .footer {
   position: fixed;
   bottom: 0px;
