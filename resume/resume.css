@@ -29,9 +29,13 @@ body {
 .page-left {
   width: 130px;
   flex-shrink: 0;
-  padding-top: 4px;
   display: flex;
   justify-content: flex-start;
+  /* Stick to viewport center vertically */
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+  align-self: flex-start;
 }
 
 .page-right {
