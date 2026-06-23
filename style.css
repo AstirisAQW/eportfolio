@@ -135,8 +135,9 @@ body {
 
 .content-section-education-item {
   padding-left: 10px;
-  border-left: 2px solid #7F7176;
+  border-left: 2px solid #000000;
   font-size: 13px;
+  font-weight: 600;
   margin-bottom: 0%;
   color: #424242;
 }
