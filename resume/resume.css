@@ -76,39 +76,29 @@ body {
 
 /* ─── Header ─── */
 .resume-header {
-  display: flex;
-  align-items: center;
-  gap: 28px;
   padding: 28px 36px 22px;
   border-bottom: 1.5px solid #ddd;
+  text-align: center;
 }
 
-.resume-photo {
-  width: 108px;
-  height: 108px;
-  object-fit: cover;
-  border: 1.5px solid #bbb;
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-.resume-header-info { flex: 1; }
+.resume-header-info { width: 100%; }
 
 .resume-name {
   font-family: 'Spectral', serif;
-  font-size: 2.05rem;
+  font-size: 2.4rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 0 0 12px;
+  letter-spacing: 3px;
+  margin: 0 0 14px;
   color: #111;
   line-height: 1.1;
 }
 
 .resume-contacts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 24px;
   font-size: 13px;
   color: #444;
 }
@@ -240,4 +230,28 @@ hr.sec-rule {
   line-height: 1.55;
   margin: 0;
   text-align: justify;
+}
+
+/* Bullet list used inside row entries */
+ul.row-bullets {
+  margin: 3px 0 0;
+  padding-left: 16px;
+  font-size: 12px;
+  color: #444;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+ul.row-bullets li {
+  margin-bottom: 2px;
+}
+
+ul.row-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+/* Award entries: no left column content needed */
+.row-entry--award .row-left {
+  color: transparent;
+  user-select: none;
 }
