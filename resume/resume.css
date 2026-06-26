@@ -16,6 +16,8 @@ body {
   min-height: 100vh;
 }
 
+/* ── Page chrome ── */
+
 .page-layout {
   display: flex;
   align-items: flex-start;
@@ -57,6 +59,8 @@ body {
 }
 .btn-nav:hover { background-color: #222; transform: translateY(-1px); }
 .btn-nav svg  { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+
+/* ── Resume card ── */
 
 .resume-card {
   background: #fff;
@@ -105,6 +109,8 @@ body {
 .contact-row a { color: #1a0dab; text-decoration: none; }
 .contact-row a:hover { text-decoration: underline; }
 
+/* ── Resume body: skills sidebar + main ── */
+
 .resume-body {
   display: grid;
   grid-template-columns: 185px 1fr;
@@ -135,6 +141,8 @@ ul.skill-list {
   padding: 22px 36px 30px;
 }
 
+/* ── Shared typography ── */
+
 .sec-title {
   font-family: 'Spectral', serif;
   font-size: 0.68rem;
@@ -154,7 +162,6 @@ hr.sec-rule {
 .main-section { margin-bottom: 22px; }
 .main-section:last-child { margin-bottom: 0; }
 
-
 .about-text {
   font-size: 13px;
   line-height: 1.72;
@@ -162,6 +169,8 @@ hr.sec-rule {
   text-align: justify;
   margin: 0;
 }
+
+/* ── Row entries (date | content) ── */
 
 .row-entry {
   display: grid;
@@ -226,16 +235,180 @@ ul.row-bullets {
   text-align: justify;
 }
 
-ul.row-bullets li {
-  margin-bottom: 2px;
-}
+ul.row-bullets li { margin-bottom: 2px; }
+ul.row-bullets li:last-child { margin-bottom: 0; }
 
-ul.row-bullets li:last-child {
-  margin-bottom: 0;
-}
-
-/* Award entries: no left column content needed */
+/* Award entries: invisible date column */
 .row-entry--award .row-left {
   color: transparent;
   user-select: none;
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE  (< 700 px)
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 699px) {
+
+  body {
+    padding: 0 0 32px;
+  }
+
+  /* ── Page chrome: hide flanking columns, let card fill width ── */
+
+  .page-layout {
+    display: block;
+  }
+
+  .page-left {
+    /* Becomes a slim sticky top bar instead of a floating side button */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    transform: none;
+    background-color: #424242;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+  }
+
+  /* Restyle the nav button to look natural inside the dark bar */
+  .btn-nav {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 0;
+  }
+  .btn-nav:hover {
+    background-color: transparent;
+    transform: none;
+    text-decoration: underline;
+  }
+  .btn-nav svg {
+    fill: #fff;
+  }
+
+  .page-right {
+    display: none;
+  }
+
+  /* ── Resume card: full-width, flush ── */
+
+  .resume-card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  /* ── Header ── */
+
+  .resume-header {
+    padding: 20px 16px 16px;
+  }
+
+  .resume-name {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .resume-contacts {
+    gap: 5px 14px;
+    font-size: 12px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  /* ── Body: stack skills above main ── */
+
+  .resume-body {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-sidebar {
+    border-right: none;
+    border-bottom: 1.5px solid #e8e8e8;
+    padding: 16px 16px 16px;
+
+    /* Skills listed horizontally to save vertical space */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+  }
+
+  .sidebar-section {
+    margin-bottom: 12px;
+    flex: 1 1 140px;
+    min-width: 120px;
+  }
+  .sidebar-section:last-child {
+    margin-bottom: 12px;
+  }
+
+  ul.skill-list {
+    /* Horizontal pill-style tags */
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    line-height: 1;
+  }
+
+  ul.skill-list li {
+    background-color: #eaeaea;
+    border-radius: 3px;
+    padding: 2px 7px;
+    font-size: 11.5px;
+    color: #333;
+  }
+
+  .resume-main {
+    padding: 16px 16px 24px;
+  }
+
+  /* ── Row entries: stack date above content ── */
+
+  .row-entry {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 14px;
+  }
+
+  .row-left {
+    font-size: 11px;
+    color: #888;
+    white-space: normal;
+    padding-top: 0;
+    margin-bottom: 2px;
+  }
+
+  /* Award entries: hide the empty date cell entirely */
+  .row-entry--award .row-left {
+    display: none;
+  }
+
+  .row-title {
+    font-size: 13px;
+  }
+
+  .row-sub {
+    font-size: 11.5px;
+  }
+
+  ul.row-bullets {
+    font-size: 11.5px;
+    padding-left: 14px;
+  }
+
+  .about-text {
+    font-size: 12.5px;
+    text-align: left;
+  }
 }
